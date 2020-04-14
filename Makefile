@@ -12,3 +12,7 @@ install:
 
 destroy:
 	kubectl delete namespace argocd
+
+projects:
+	kubectl create namespace development
+	kubectl create namespace production
