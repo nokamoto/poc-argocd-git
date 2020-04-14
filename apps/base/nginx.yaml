@@ -23,7 +23,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: nginx-test-
+  name: nginx-test
   annotations:
     argocd.argoproj.io/sync-wave: "1"
     argocd.argoproj.io/hook: PostSync
@@ -43,7 +43,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: nginx-notification-
+  name: nginx-notification
   annotations:
     argocd.argoproj.io/sync-wave: "1"
     argocd.argoproj.io/hook: PostSync
