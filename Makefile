@@ -22,9 +22,10 @@ sync:
 	argocd app create app \
 		--dest-namespace argocd \
 		--dest-server https://kubernetes.default.svc \
-		--repo https://github.com/nokamoto/poc-argocd-git.git \
-	    --revision app-of-apps \
+		--repo https://github.com/nokamoto/poc-argocd-git.git \
+		--revision app-of-apps \
 		--path argocd/app
+
 	argocd app sync apps  
 
 destroy:
