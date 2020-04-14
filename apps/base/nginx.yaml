@@ -34,7 +34,7 @@ spec:
       - name: test-nginx
         image: bash
         command:
-          - "[ 0 == 1 ]"
+          - "false"
       restartPolicy: Never
   backoffLimit: 2
 ---
