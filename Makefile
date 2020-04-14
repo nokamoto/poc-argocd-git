@@ -23,7 +23,7 @@ sync:
 		--dest-namespace argocd \
 		--dest-server https://kubernetes.default.svc \
 		--repo https://github.com/nokamoto/poc-argocd-git.git \
-		--revision app-of-apps \
+		--revision master \
 		--path argocd/app
 
 	argocd app sync app
