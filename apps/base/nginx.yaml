@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
@@ -17,3 +18,44 @@ spec:
         image: nginx:1.14.2
         ports:
         - containerPort: 80
+---
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: nginx-test-
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: test-nginx
+        image: bash
+        command:
+          - echo
+          - do test
+      restartPolicy: Never
+  backoffLimit: 2
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: nginx-notification-
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: test-nginx
+        image: bash
+        command:
+          - echo
+          - do notification
+      restartPolicy: Never
+  backoffLimit: 2
