@@ -1,0 +1,30 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: development-apps
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/nokamoto/poc-argocd-git.git
+    targetRevision: development
+    path: apps/overlays/development
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: development
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: production-apps
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/nokamoto/poc-argocd-git.git
+    targetRevision: production
+    path: apps/overlays/production
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: production
