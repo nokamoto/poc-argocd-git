@@ -63,7 +63,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: 
+  name: nginx-ng-notification
   annotations:
     argocd.argoproj.io/hook: SyncFail
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
