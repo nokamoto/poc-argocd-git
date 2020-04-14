@@ -26,7 +26,7 @@ sync:
 		--revision app-of-apps \
 		--path argocd/app
 
-	argocd app sync apps  
+	argocd app sync app
 
 destroy:
 	kubectl delete namespace argocd
