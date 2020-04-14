@@ -52,8 +52,28 @@ spec:
   template:
     spec:
       containers:
-      - name: test-nginx
+      - name: ok-notification
         image: bash
+        command:
+          - echo
+          - do notification
+      restartPolicy: Never
+  backoffLimit: 2
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: 
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: ng-notification
+        image: bash
+        command: 
         command:
           - echo
           - do notification
