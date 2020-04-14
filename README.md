@@ -6,4 +6,5 @@ argocd v1.5.0
 ```bash
 $ make install
 $ make sync
+$ open localhost:8080
 ```
